@@ -7,7 +7,7 @@
         init: function () {
             console.log('hhh')
             setTimeout(function () {
-                document.getElementById('main').innerHTML = 'Hi, gulp!';
+                document.getElementById('main').children[1].innerHTML = 'Hi, gulp!';
             }, 3000);
         }
     };
