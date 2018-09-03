@@ -1,0 +1,10 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #eee url("../images/warm.png");
+}
+body #header,
+body #footer {
+  font-size: 30px;
+  text-align: center;
+}
