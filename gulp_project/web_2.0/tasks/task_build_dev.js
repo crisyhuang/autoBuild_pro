@@ -3,6 +3,7 @@ const reload = browserSync.reload;
 const del = require('del'); // 删除文件
 const less = require('gulp-less'); // less 编译
 const fileinclude = require('gulp-file-include'); // include html 文件
+const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = function (gulp) {
     gulp.task('build_dev', ['clean:dev'], function () {
@@ -23,24 +24,29 @@ module.exports = function (gulp) {
 
     gulp.task('less:dev', function () {
         return gulp.src(['src/css/**/*.less'])
+            .pipe(sourcemaps.init())
             .pipe(less())
+            .pipe(sourcemaps.write())
             .pipe(gulp.dest('dev/css'))
             .pipe(reload({stream: true}));
     });
 
     gulp.task('css:dev', function () {
         return gulp.src('src/css/**/*.css')
-            .pipe(gulp.dest('dev/css'));
+            .pipe(gulp.dest('dev/css'))
+            .pipe(reload({stream: true}));
     });
 
     gulp.task('js:dev', function () {
         return gulp.src('src/js/**/*.js')
-            .pipe(gulp.dest('dev/js'));
+            .pipe(gulp.dest('dev/js'))
+            .pipe(reload({stream: true}));
     });
 
     gulp.task('image:dev', function () {
         return gulp.src('src/images/**/*')
-            .pipe(gulp.dest('dev/images'));
+            .pipe(gulp.dest('dev/images'))
+            .pipe(reload({stream: true}));
     });
 
     gulp.task('tpl:dev', function () {
@@ -49,7 +55,8 @@ module.exports = function (gulp) {
                 prefix: '@@',
                 basepath: '@file'
             }))
-            .pipe(gulp.dest('dev/tpl'));
+            .pipe(gulp.dest('dev/tpl'))
+            .pipe(reload({stream: true}));
     });
 
     gulp.task('browser-sync:dev', function () {
