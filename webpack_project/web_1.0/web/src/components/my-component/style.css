@@ -1,0 +1,7 @@
+.hello{
+    width: 200px;
+    height: 200px;
+    background: url('./icon.jpg');
+    background-size: 100%;
+    color: white;
+}
