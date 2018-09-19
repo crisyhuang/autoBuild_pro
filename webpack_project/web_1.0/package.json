@@ -4,7 +4,6 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "cd web && webpack --watch --config webpack.dev.config.js",
     "start": "cd web && webpack-dev-server --open --config webpack.dev.config.js",
     "dev": "cd web && webpack --config webpack.dev.config.js",
@@ -14,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -22,10 +24,12 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "style-loader": "^0.23.0",
-    "webpack": "^4.17.2",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",
-    "webpack-manifest-plugin": "^2.0.4"
+    "webpack-manifest-plugin": "^2.0.4",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "lodash": "^4.17.11"

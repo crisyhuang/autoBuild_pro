@@ -1,18 +1,10 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.config.js');
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
 const webpack = require('webpack');
 
-module.exports = {
+module.exports = merge(common, {
     mode: 'development',
-    entry: {
-        index: './src/components/my-component/index.js'
-    },
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
-    },
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
@@ -43,11 +35,7 @@ module.exports = {
     },
     plugins: [
         new WebpackManifestPlugin(),
-        new CleanWebpackPlugin('dist'),
-        new HtmlWebpackPlugin({
-            title: 'my-component'
-        }),
-        new webpack.NamedModulesPlugin(),
+        // new webpack.NamedModulesPlugin(), //启用了mode:development,会自动引入该插件
         new webpack.HotModuleReplacementPlugin()
     ]
-};
+});

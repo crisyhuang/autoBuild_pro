@@ -1,18 +1,11 @@
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.config.js');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const WebpackManifestPlugin = require('webpack-manifest-plugin');
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
-    mode: 'development',
-    entry: {
-        index: './src/components/my-component/index.js'
-    },
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
-    },
+module.exports = merge(common, {
+    mode: 'production',
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -21,6 +14,15 @@ module.exports = {
                     fallback: 'style-loader',
                     use: 'css-loader'
                 })
+            },
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -37,13 +39,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new WebpackManifestPlugin(),
-        new CleanWebpackPlugin('dist'),
-        new HtmlWebpackPlugin({
-            title: 'my-component'
-        }),
         new ExtractTextWebpackPlugin({
             filename: '[name].css'
-        })
+        }),
+        // new UglifyJSPlugin({sourceMap: true}) //启用了mode:production,会自动引入该插件
     ]
-};
+});
