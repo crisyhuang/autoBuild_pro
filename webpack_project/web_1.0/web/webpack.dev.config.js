@@ -1,3 +1,4 @@
+const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.config.js');
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
@@ -14,6 +15,7 @@ module.exports = merge(common, {
         rules: [
             {
                 test: /\.css$/,
+                include: path.resolve(__dirname, "src"),
                 use: [
                     'style-loader',
                     'css-loader'
@@ -21,6 +23,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
+                include: path.resolve(__dirname, "src"),
                 use: [
                     {
                         loader: 'file-loader',

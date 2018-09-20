@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        index: './src/components/my-component/index.js'
+        index: './src/components/my-component/index.js',
+        vendor: ['lodash']
     },
     output: {
         filename: '[name].js',
