@@ -17,3 +17,4 @@ gulp-rev gulp-rev-collector
 #### web_1.0
 - 运行命令：见 npm scripts
 - 支持功能：涵盖上述 gulp 项目的所有功能，此外还有模块打包、拆分 chunk 功能
+- 注：webpack 版本为 4.19.1
