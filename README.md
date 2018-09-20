@@ -12,3 +12,8 @@ gulp-rev gulp-rev-collector
    - 支持 gulp build-dev，添加了实时重载功能
    - 优化目录结构
    - 每条 gulp 命令对应一个文件，统一放在 tasks 文件夹中
+   
+### webpack_project
+#### web_1.0
+- 运行命令：见 npm scripts
+- 支持功能：涵盖上述 gulp 项目的所有功能，此外还有模块打包、拆分 chunk 功能
