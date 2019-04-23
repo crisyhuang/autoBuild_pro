@@ -18,3 +18,7 @@ gulp-rev gulp-rev-collector
 - 运行命令：见 npm scripts
 - 支持功能：涵盖上述 gulp 项目的所有功能，此外还有模块打包、拆分 chunk 功能
 - 注：webpack 版本为 4.19.1
+
+#### web_2.0
+- 运行命令：见 npm scripts
+- 支持功能呢：vue项目构建雏形，待完善
